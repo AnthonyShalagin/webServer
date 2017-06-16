@@ -3,6 +3,9 @@ const hbs = require('hbs');
 
 var app = express();
 
+//Setup for partials (used for footers & headers in multiple files)
+hbs.registerPartials(__dirname + '/views/partials');
+
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
