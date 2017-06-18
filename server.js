@@ -9,6 +9,12 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
+app.use((req, res, next) =>  { //only done after next is called.
+    var now = new Date().toString();
+    console.log(`${now}: ${req.method} ${req.url}`);
+    next();
+});
+
 // Helper for the partials
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear()
